@@ -20,7 +20,13 @@ class Router
     {
         try {
             if (isset($_GET['page'])) {
-                $this->ctrlProducts->render($this->twig, $_GET['page']);
+                switch ($_GET['page']) {
+                    case 'default':
+                        $this->ctrlWelcome->render($this->twig);
+                        break;
+                    default:
+                        $this->ctrlProducts->render($this->twig, $_GET['page']);
+                }
             } else {
                 $this->ctrlWelcome->render($this->twig);
             }
