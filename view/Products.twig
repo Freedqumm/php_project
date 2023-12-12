@@ -23,7 +23,7 @@
 				<div class="row">
 					{% for product in products %}
 						<div class="col-md-4 mb-4">
-							<a href="" class="card h-100 text-decoration-none">
+							<a href="?page=buy&product={{ product.id }}" class="card h-100 text-decoration-none">
 								<div class="card">
 									<img src="../public/images/{{ product.image }}" class="card-img-top" alt="{{ product.name }}">
 									<div class="card-body">
