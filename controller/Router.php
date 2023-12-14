@@ -28,28 +28,35 @@ class Router
         ## METTRE UN TRY CATCH LE MOMENT VENU !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#
         ####################################################################################################
 
-            if (isset($_GET['page'])) {
-                switch ($_GET['page']) {
-                    case 'default':
-                        $this->ctrlWelcome->render($this->twig);
-                        break;
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (!isset($_SESSION['cart'])) {
+            $_SESSION['cart'] = array();
+        }
 
-                    case 'buy':
-                        if(isset($_GET['product'])){
-                            $this->ctrlBuy->render($this->twig, $_GET['product']);
-                        } else {
-                            $this->ctrlError->render($this->twig);
-                        }
-                        break;
+        if (isset($_GET['page'])) {
+            switch ($_GET['page']) {
+                case 'default':
+                    $this->ctrlWelcome->render($this->twig);
+                    break;
 
-                    default:
-                        $this->ctrlProducts->render($this->twig, $_GET['page']);
-                }
-            } else {
-                $this->ctrlWelcome->render($this->twig);
+                case 'buy':
+                    if (isset($_GET['product'])) {
+                        $this->ctrlBuy->render($this->twig, $_GET['product']);
+                    } else {
+                        $this->ctrlError->render($this->twig);
+                    }
+                    break;
+
+                default:
+                    $this->ctrlProducts->render($this->twig, $_GET['page']);
             }
+        } else {
+            $this->ctrlWelcome->render($this->twig);
+        }
 
-        
+
     }
 
 
