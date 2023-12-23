@@ -22,8 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
     }
-
-    #header("Location: ../public/?page=cart");
 }
 
 // Fonction pour mettre à jour la quantité d'un produit dans le panier
@@ -32,9 +30,36 @@ function updateQuantity($productId, $action)
     $index = array_search($productId, array_column($_SESSION['cart'], 'id'));
 
     if ($index !== false) {
-        if ($_SESSION['cart'][$index]['quantity'] > 0) {
+        if($action === 'increment'){
+            try{
+                $db = new PDO(
+                    'mysql:host=localhost;dbname=web4shop;charset=utf8',
+                    'root'
+                );
+    
+                $query = $db->prepare("SELECT quantity FROM PRODUCTS WHERE id = $productId");
+                $query->execute();
+                $maxQuantity = $query->fetch(PDO::FETCH_ASSOC)['quantity'];
+                print_r($maxQuantity);
+            } catch (Exception $e){
+                echo "PDO problem";
+            }
+            if($_SESSION['cart'][$index]['quantity']  < $maxQuantity){
+                $_SESSION['cart'][$index]['quantity'] += 1;
+            }   
+        } else {
+            if($_SESSION['cart'][$index]['quantity'] > 1){
+                $_SESSION['cart'][$index]['quantity'] -= 1;
+            } else {
+                removeProduct($productId);
+            }
+        }
+        
+        /* Je laisse ceci en commentaire car je trouvais ce bout de code élégant 
+        if ($_SESSION['cart'][$index]['quantity'] >  1 && $_SESSION['cart'][$index]['quantity'] < $maxQuantity) {
             $_SESSION['cart'][$index]['quantity'] += ($action === 'increment') ? 1 : -1;
         }
+        */
     }
 }
 
