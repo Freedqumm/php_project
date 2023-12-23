@@ -14,4 +14,8 @@ class BuyController
         echo $twig->render('buy.twig', ['product' => $product]);
     }
 
+    public function render_bis($twig){
+        echo $twig->render('addedToCart.twig');
+    }
+
 }

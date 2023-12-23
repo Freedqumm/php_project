@@ -72,7 +72,3 @@ function getProduct($id){
 
     return $products;
 }
-
-function postCart($product_id, $order_id){
-
-}

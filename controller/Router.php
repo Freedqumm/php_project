@@ -4,6 +4,7 @@ require_once 'WelcomeController.php';
 require_once 'ProductsController.php';
 require_once 'ErrorController.php';
 require_once 'BuyController.php';
+require_once 'CartController.php';
 class Router
 {
     private $twig;
@@ -12,6 +13,7 @@ class Router
     private $ctrlProducts;
     private $ctrlError;
     private $ctrlBuy;
+    private $ctrlCart;
 
     public function __construct($twig)
     {
@@ -20,6 +22,7 @@ class Router
         $this->ctrlProducts = new ProductsController();
         $this->ctrlError = new ErrorController();
         $this->ctrlBuy = new BuyController();
+        $this->ctrlCart = new CartController();
     }
 
     public function route()
@@ -27,13 +30,9 @@ class Router
         ####################################################################################################
         ## METTRE UN TRY CATCH LE MOMENT VENU !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#
         ####################################################################################################
+        
+        
 
-        if (!isset($_SESSION)) {
-            session_start();
-        }
-        if (!isset($_SESSION['cart'])) {
-            $_SESSION['cart'] = array();
-        }
 
         if (isset($_GET['page'])) {
             switch ($_GET['page']) {
@@ -41,14 +40,17 @@ class Router
                     $this->ctrlWelcome->render($this->twig);
                     break;
 
+                case 'cart':
+                    $this->ctrlCart->render($this->twig);
+                    break;
                 case 'buy':
                     if (isset($_GET['product'])) {
                         $this->ctrlBuy->render($this->twig, $_GET['product']);
                     } else {
-                        $this->ctrlError->render($this->twig);
+                        $this->ctrlBuy->render_bis($this->twig);
                     }
                     break;
-
+                    
                 default:
                     $this->ctrlProducts->render($this->twig, $_GET['page']);
             }
