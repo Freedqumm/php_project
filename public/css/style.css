@@ -37,7 +37,7 @@
 .card-group {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Ou utilisez 'space-around' selon votre préférence */
+    justify-content: space-between;
 }
 
 .clcard-img-top {
@@ -67,3 +67,8 @@
 
 
 
+    .icon-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }

@@ -4,6 +4,7 @@ require_once 'WelcomeController.php';
 require_once 'ProductsController.php';
 require_once 'ErrorController.php';
 require_once 'BuyController.php';
+require_once 'InscriptionController.php';
 class Router
 {
     private $twig;
@@ -12,6 +13,7 @@ class Router
     private $ctrlProducts;
     private $ctrlError;
     private $ctrlBuy;
+    private $ctrlInscription;
 
     public function __construct($twig)
     {
@@ -20,6 +22,7 @@ class Router
         $this->ctrlProducts = new ProductsController();
         $this->ctrlError = new ErrorController();
         $this->ctrlBuy = new BuyController();
+        $this->ctrlInscription = new InscriptionController();
     }
 
     public function route()
@@ -40,6 +43,10 @@ class Router
                         } else {
                             $this->ctrlError->render($this->twig);
                         }
+                        break;
+
+                    case 'inscription':
+                        $this->ctrlInscription->render($this->twig);
                         break;
 
                     default:
