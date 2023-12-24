@@ -4,16 +4,15 @@ require_once 'WelcomeController.php';
 require_once 'ProductsController.php';
 require_once 'ErrorController.php';
 require_once 'BuyController.php';
-require_once 'InscriptionController.php';
+require_once 'CustomerController.php';
 class Router
 {
     private $twig;
-    private $url;
     private $ctrlWelcome;
     private $ctrlProducts;
     private $ctrlError;
     private $ctrlBuy;
-    private $ctrlInscription;
+    private $ctrlCustomer;
 
     public function __construct($twig)
     {
@@ -22,7 +21,7 @@ class Router
         $this->ctrlProducts = new ProductsController();
         $this->ctrlError = new ErrorController();
         $this->ctrlBuy = new BuyController();
-        $this->ctrlInscription = new InscriptionController();
+        $this->ctrlCustomer = new CustomerController();
     }
 
     public function route()
@@ -46,9 +45,16 @@ class Router
                         break;
 
                     case 'inscription':
-                        $this->ctrlInscription->render($this->twig);
+                        $this->ctrlCustomer->showRegistrationForm($this->twig);
+                        break;
+                    case 'process-registration':
+                        $this->ctrlCustomer->processRegistration();
                         break;
 
+
+                    case 'process-login':
+                        $this->ctrlCustomer->processLogin();
+                        break;
                     default:
                         $this->ctrlProducts->render($this->twig, $_GET['page']);
                 }
