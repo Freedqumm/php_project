@@ -43,6 +43,7 @@ class Router
                 case 'cart':
                     $this->ctrlCart->render($this->twig);
                     break;
+                    
                 case 'buy':
                     if (isset($_GET['product'])) {
                         $this->ctrlBuy->render($this->twig, $_GET['product']);
