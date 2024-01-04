@@ -29,7 +29,9 @@
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     {% if is_user_authenticated %}
-                        <h1>Bonjour</h1>
+                        <h2>Bonjour mec</h2>
+                        <form action="?=Logout" method="post" class="nav-item">
+                            <button type="submit" class="nav-link active">Déconnexion</button></form>
                     {% else %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
@@ -41,18 +43,17 @@
                                     <div class="mb-3">
                                         <label for="exampleDropdownFormEmail1" class="form-label">Adresse e-mail</label>
                                         <input type="email" autocomplete="on" name="email" class="form-control"
-                                               id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                                               id="exampleDropdownFormEmail1" placeholder="email@example.com" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleDropdownFormPassword1" class="form-label">Mot de passe</label>
                                         <input type="password" name="password" class="form-control"
-                                               id="exampleDropdownFormPassword1" placeholder="Mot de passe">
+                                               id="exampleDropdownFormPassword1" placeholder="Mot de passe" required>
                                     </div>
                                     <button type="submit" name="envoi" class="btn btn-primary">Connecter</button>
                                 </form>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="?page=inscription">Nouveau ? Inscrivez vous ici</a>
-                                <a class="dropdown-item" href="#">Mot de passe oublié ?</a>
                             </div>
                         </li>
                     {% endif %}

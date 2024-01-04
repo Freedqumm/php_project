@@ -5,6 +5,7 @@ require_once 'ProductsController.php';
 require_once 'ErrorController.php';
 require_once 'BuyController.php';
 require_once 'CustomerController.php';
+require_once 'ConfirmedController.php';
 class Router
 {
     private $twig;
@@ -13,6 +14,7 @@ class Router
     private $ctrlError;
     private $ctrlBuy;
     private $ctrlCustomer;
+    private $ctrlConfirmed;
 
     public function __construct($twig)
     {
@@ -22,6 +24,7 @@ class Router
         $this->ctrlError = new ErrorController();
         $this->ctrlBuy = new BuyController();
         $this->ctrlCustomer = new CustomerController();
+        $this->ctrlConfirmed = new ConfirmedController();
     }
 
     public function route()
@@ -51,10 +54,19 @@ class Router
                         $this->ctrlCustomer->processRegistration();
                         break;
 
+                    case 'inscriptionConfirmed':
+                        $this->ctrlConfirmed->render($this->twig);
+                        break;
+
 
                     case 'process-login':
                         $this->ctrlCustomer->processLogin();
                         break;
+
+                    case 'Logout':
+                        $this->ctrlCustomer->processLogout();
+                        break;
+
                     default:
                         $this->ctrlProducts->render($this->twig, $_GET['page']);
                 }

@@ -1,6 +1,7 @@
 <?php
 
 require_once '../model/UserModel.php';
+
 class CustomerController
 {
     public function __construct()
@@ -30,23 +31,31 @@ class CustomerController
         exit();
     }
 
-
     public function processLogin()
     {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $customerModel = new UserModel();
-        $customer = $customerModel->getCustomerByEmail($email);
+        $userModel = new UserModel();
+        $user = $userModel->getCustomerByEmail($email);
 
-        if ($customer && password_verify($password, $customer['password'])) {
-            $_SESSION['user_id'] = $customer['id'];
-            $redirect_url = isset($_SESSION['redirect_url']) ? $_SESSION['redirect_url'] : '../public/?page=accueil';
-            unset($_SESSION['redirect_url']); // Effacer l'URL stockée dans la session
-            header('Location: ' . $redirect_url);
+        if ($user || password_verify($password, $user['password'])) {
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['is_user_authenticated'] = true;
+            header('Location: ../public/?page=default');
             exit();
         } else {
             echo "Identifiants invalides.";
         }
+    }
+
+    public function processLogout()
+    {
+        // Détruire la session
+        session_destroy();
+
+        // Rediriger vers la page d'accueil (ou une autre page après la déconnexion)
+        header('Location: ../public/?page=default');
+        exit();
     }
 }
