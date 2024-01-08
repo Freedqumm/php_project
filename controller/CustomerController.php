@@ -6,7 +6,6 @@ class CustomerController
 {
     public function __construct()
     {
-        session_start();
     }
 
     public function showRegistrationForm($twig)
@@ -19,7 +18,7 @@ class CustomerController
         $nom = $_POST['nom'];
         $prenom = $_POST['prenom'];
         $email = $_POST['email'];
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $password = $_POST['password'];
         $numero = $_POST['numero'];
         $code_postal = $_POST['code_postal'];
         $ville = $_POST['ville'];
@@ -35,26 +34,35 @@ class CustomerController
     {
         $email = $_POST['email'];
         $password = $_POST['password'];
+        $password = sha1($password);
 
         $userModel = new UserModel();
         $user = $userModel->getCustomerByEmail($email);
 
-        if ($user || password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['is_user_authenticated'] = true;
-            header('Location: ../public/?page=default');
-            exit();
+        if (!empty($user)) {
+            echo "Utilisateur trouvé : ";
+            var_dump($user);
+            if ($password == $user['password']) {
+                session_start();
+                $_SESSION['user'] = $user;
+                header('Location: ../public/?page=default');
+                exit();
+            } else {
+                echo "Mot de passe incorrect. Voici ce que tu as entré : $password";
+            }
         } else {
-            echo "Identifiants invalides.";
+            echo "Utilisateur non trouvé.";
         }
     }
 
+
+
     public function processLogout()
     {
-        // Détruire la session
+        session_start();
+
         session_destroy();
 
-        // Rediriger vers la page d'accueil (ou une autre page après la déconnexion)
         header('Location: ../public/?page=default');
         exit();
     }

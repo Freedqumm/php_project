@@ -63,18 +63,18 @@ class Router
                         $this->ctrlCustomer->processLogin();
                         break;
 
-                    case 'Logout':
+                    case 'logout':
                         $this->ctrlCustomer->processLogout();
                         break;
 
                     default:
-                        $this->ctrlProducts->render($this->twig, $_GET['page']);
+                        $this->ctrlProducts->render($this->twig, $_GET['page'] );
                 }
             } else {
                 $this->ctrlWelcome->render($this->twig);
             }
 
-        
+
     }
 
 

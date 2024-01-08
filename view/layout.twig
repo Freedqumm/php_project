@@ -28,12 +28,11 @@
 
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    {% if is_user_authenticated %}
-                        <h2>Bonjour mec</h2>
-                        <form action="?=Logout" method="post" class="nav-item">
+                    {% if user is defined and user %}
+                        <h4>Bonjour, {{ user.forname }} {{ user.surname }}.</h4>
+                        <form action="?page=logout" method="post" class="nav-item">
                             <button type="submit" class="nav-link active">Déconnexion</button></form>
                     {% else %}
-                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                                aria-expanded="false">
                                 Connexion
@@ -96,10 +95,10 @@
 <footer class="site-footer">
     <div class="container1">
         <p class="float mb-1">
-            <a href="#">Back to top</a>
+            <a href="#">Retour en haut</a>
         </p>
         <p class="mb-1"> Copyright Polytech 2023-2024</p>
-        <p class="mb-0">Site commercial créé par Noa et Tom.</p>
+        <p class="mb-0">Site commercial créé par PETEL et TOUPENCE.</p>
         <p><a href="/"> Cliquez ici pour nous contacter.</a></p>
     </div>
 </footer>
