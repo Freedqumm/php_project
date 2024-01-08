@@ -20,7 +20,9 @@
 		<br>
 		<body>
 
-			<div class="container mt-5">
+			<div class="container mt-1">
+            <div class="row">
+            
 				<h2 class="mb-4">Mon Panier</h2>
 
 				{% if cart is not empty %}
@@ -49,23 +51,8 @@
 									<td>
 										{{ product.quantity }}
 									</td>
-									<td>
-										<form action="../model/updateCart.php" method='post' style="dipslay: inline;">
-											<div class="input-group">
-												<input type="hidden" name="product_id" value="{{ product.id }}">
-												<button type="submit" class="btn btn-outline-secondary" name="action" value="decrement">-</button>
-												<button type="submit" class="btn btn-outline-secondary" name="action" value="increment">+</button>
-											</div>
-										</form>
-									</td>
 									<td>{{ totalProduct|number_format(2, '.', ' ') }}
 										€</td>
-									<td>
-										<form action="../model/updateCart.php" method="post" style="display: inline;">
-											<input type="hidden" name="product_id" value="{{ product.id }}">
-											<button type="submit" name="action" value="delete">Supprimer</button>
-										</form>
-									</td>
 								</tr>
 							{% endfor %}
 							<tr class="table-info">
@@ -75,14 +62,29 @@
 							</tr>
 						</tbody>
 					</table>
-					
+                    </div>
+                    <div class="row">
 					<a href="?page=order">
 						<input type="submit" value="Passer la commande">
 					</a>
+                    </div>
 				{% else %}
 					<p>Votre panier est vide.</p>
 				{% endif %}
 			</div>
+
+			<div class="payment-buttons">
+				<form action="process_payment.php" method="post" style="display: inline;">
+					<input type="hidden" name="payment_method" value="cheque">
+					<button type="submit" class="btn btn-success">Payer par Chèque</button>
+				</form>
+
+				<form action="process_payment.php" method="post" style="display: inline;">
+					<input type="hidden" name="payment_method" value="paypal">
+					<button type="submit" class="btn btn-primary">Payer par PayPal</button>
+				</form>
+			</div>
+
 		</body>
 	</html>
 </div></body></html>{% endblock %}

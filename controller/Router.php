@@ -5,6 +5,8 @@ require_once 'ProductsController.php';
 require_once 'ErrorController.php';
 require_once 'BuyController.php';
 require_once 'CartController.php';
+require_once 'OrderController.php';
+require_once 'PaymentController.php';
 class Router
 {
     private $twig;
@@ -14,7 +16,8 @@ class Router
     private $ctrlError;
     private $ctrlBuy;
     private $ctrlCart;
-
+    private $ctrlOrder;
+    private $ctrlPayment;
     public function __construct($twig)
     {
         $this->twig = $twig;
@@ -23,6 +26,8 @@ class Router
         $this->ctrlError = new ErrorController();
         $this->ctrlBuy = new BuyController();
         $this->ctrlCart = new CartController();
+        $this->ctrlOrder = new OrderController();
+        $this->ctrlPayment = new PaymentController();
     }
 
     public function route()
@@ -50,6 +55,13 @@ class Router
                     } else {
                         $this->ctrlBuy->render_bis($this->twig);
                     }
+                    break;
+                case 'order':
+                    $this->ctrlOrder->render($this->twig);
+                    break;
+                
+                case 'payment':
+                    $this->ctrlPayment->render($this->twig);
                     break;
                     
                 default:
