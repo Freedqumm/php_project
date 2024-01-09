@@ -97,4 +97,6 @@ $pdf->ln();
 
 
 
-$pdf->Output();
+$pdf->Output("D", "Facture");
+
+header("Location: ../public/?page=orderCompleted");
