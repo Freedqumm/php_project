@@ -74,15 +74,15 @@
 			</div>
 
 			<div class="payment-buttons">
-				<form action="process_payment.php" method="post" style="display: inline;">
+				<form action="../model/payment.php" method="post" style="display: inline;">
 					<input type="hidden" name="payment_method" value="cheque">
 					<button type="submit" class="btn btn-success">Payer par Chèque</button>
 				</form>
 
-				<form action="process_payment.php" method="post" style="display: inline;">
+				<a href="https://www.paypal.com/fr/home" method="post" style="display: inline;">
 					<input type="hidden" name="payment_method" value="paypal">
 					<button type="submit" class="btn btn-primary">Payer par PayPal</button>
-				</form>
+				</a>
 			</div>
 
 		</body>
