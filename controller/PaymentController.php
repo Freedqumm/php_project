@@ -1,9 +1,15 @@
 <?php
 
-class PaymentController{
+class PaymentController
+{
 
-    public function render($twig){
+    public function render($twig)
+    {
         session_start();
-        echo $twig->render('payment.twig', ['cart' => $_SESSION['cart']]);
+        if (isset($_SESSION['user'])) {
+            echo $twig->render('payment.twig', ['user' => $_SESSION['user']]);
+        } else {
+            echo $twig->render('payment.twig', ['cart' => $_SESSION['cart']]);
+        }
     }
 }
