@@ -9,6 +9,7 @@ require_once 'ConfirmedController.php';
 require_once 'CartController.php';
 require_once 'OrderController.php';
 require_once 'PaymentController.php';
+require_once 'OrderCompletedController.php';
 class Router
 {
     private $twig;
@@ -34,7 +35,7 @@ class Router
         $this->ctrlCart = new CartController();
         $this->ctrlOrder = new OrderController();
         $this->ctrlPayment = new PaymentController();
-        $this->ctrlOrderCompleted = new OrderCompleted();
+        $this->ctrlOrderCompleted = new OrderCompletedController();
     }
 
     public function route()
@@ -93,6 +94,8 @@ class Router
 
                 case 'orderCompleted':
                     $this->ctrlOrderCompleted->render($this->twig);
+                    break;
+
                 default:
                     $this->ctrlProducts->render($this->twig, $_GET['page']);
             }

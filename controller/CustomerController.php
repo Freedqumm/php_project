@@ -45,7 +45,7 @@ class CustomerController
             if ($password == $user['password']) {
                 session_start();
                 $_SESSION['user'] = $user;
-                header('Location: ../public/?page=default');
+                header('Location: ../model/loadCart.php');
                 exit();
             } else {
                 echo "Mot de passe incorrect. Voici ce que tu as entré : $password";
@@ -56,14 +56,10 @@ class CustomerController
     }
 
 
-
     public function processLogout()
     {
-        session_start();
-
-        session_destroy();
-
-        header('Location: ../public/?page=default');
+        
+        header('Location: ../model/storeCart.php');
         exit();
     }
 }
