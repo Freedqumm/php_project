@@ -7,6 +7,7 @@ class BuyController
     {
 
     }
+
     public function render($twig, $id)
     {
         $product = getProduct($id);
@@ -19,8 +20,13 @@ class BuyController
         }
     }
 
-    public function render_bis($twig){
-        echo $twig->render('addedToCart.twig');
+    public function render_bis($twig)
+    {
+        session_start();
+        if (isset($_SESSION['user'])) {
+            echo $twig->render('addedToCart.twig', ['user' => $_SESSION['user']]);
+        } else {
+            echo $twig->render('addedToCart.twig');
+        }
     }
-
 }
