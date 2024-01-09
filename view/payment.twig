@@ -32,7 +32,7 @@
 								<th>Produit</th>
 								<th>Prix unitaire</th>
 								<th>Quantité</th>
-								<th></th>
+								
 								<th>Total</th>
 							</tr>
 						</thead>
@@ -56,18 +56,14 @@
 								</tr>
 							{% endfor %}
 							<tr class="table-info">
-								<td colspan="4">Total</td>
+								<td colspan="3">Total</td>
 								<td>{{ totalAmount|number_format(2, '.', ' ') }}
 									€</td>
 							</tr>
 						</tbody>
 					</table>
                     </div>
-                    <div class="row">
-					<a href="?page=order">
-						<input type="submit" value="Passer la commande">
-					</a>
-                    </div>
+
 				{% else %}
 					<p>Votre panier est vide.</p>
 				{% endif %}
