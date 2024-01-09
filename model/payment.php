@@ -22,7 +22,7 @@ class PDF extends FPDF
         foreach ($data as $row) {
             foreach ($row as $col) {
 
-                if (substr($col, -3) === "jpg") {   
+                if (substr($col, -3) === "jpg" || substr($col, -3) === "png" ) {   
                     
                     $this->Image("../public/images/$col", $this->GetX() + 5, $this->GetY(), 12);
                     $this->Cell(38, $height, "", "TB");
