@@ -23,11 +23,13 @@
 				<div class="row">
 					{% for product in products %}
 						<div class="col-md-4 mb-4">
-							<a href="?page=buy&product={{ product.id }}" class="card h-100 text-decoration-none">
-								<div class="card">
+							<a href="?page=buy&product={{ product.id }}" class="clickable-card h-100 text-decoration-none">
+								<div class="clickable-card" style="height: 100%; border: 1px solid #ddd; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;">
 									<img src="../public/images/{{ product.image }}" class="card-img-top" alt="{{ product.name }}">
 									<div class="card-body">
+										<br>
 										<h5 class="card-title">{{ product.name }}</h5>
+										<br>
 										<p class="card-text">{{ product.description }}</p>
 										<p class="card-text">
 											<strong>Price:</strong>

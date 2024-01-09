@@ -3,7 +3,7 @@
 function getBiscuits()
 {
     try {
-        $db = new PDO(
+            $db = new PDO(
             'mysql:host=localhost;dbname=web4shop;charset=utf8',
             'root'
         );

@@ -11,7 +11,12 @@ class BuyController
     {
         $product = getProduct($id);
 
-        echo $twig->render('buy.twig', ['product' => $product]);
+        session_start();
+        if (isset($_SESSION['user'])) {
+            echo $twig->render('buy.twig', ['user' => $_SESSION['user'], 'product' => $product]);
+        } else {
+            echo $twig->render('buy.twig', ['product' => $product]);
+        }
     }
 
     public function render_bis($twig){

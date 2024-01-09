@@ -1,13 +1,15 @@
     body {
         margin: 0;
         padding: 0;
-        min-height: 100vh; /* 100% de la hauteur de la fenêtre visible */
+        min-height: 100vh;
+        /* 100% de la hauteur de la fenêtre visible */
         display: flex;
         flex-direction: column;
     }
 
     .content {
-        flex: 1; /* Fait en sorte que le contenu prenne autant d'espace que possible */
+        flex: 1;
+        /* Fait en sorte que le contenu prenne autant d'espace que possible */
         padding: 20px;
     }
 
@@ -15,11 +17,13 @@
         background-color: #333;
         color: #fff;
         padding: 20px 0;
-        margin-top: auto; /* Pousse le footer vers le bas */
+        margin-top: auto;
+        /* Pousse le footer vers le bas */
         text-align: center;
         line-height: 2;
 
     }
+
     .site-footer p {
         text-align: center;
     }
@@ -31,39 +35,50 @@
 
     .site-footer a:hover {
         color: #ffcc00;
-    /
+        /
     }
 
-.card-group {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; /* Ou utilisez 'space-around' selon votre préférence */
-}
+    .card-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
 
-.clcard-img-top {
-    max-width: 100%;
-}
+    .clcard-img-top {
+        max-width: 100%;
+    }
 
-.clickable-card {
-    max-width: 300px; /* Ajoutez la largeur maximale que vous souhaitez pour vos cartes */
-    margin: 0 auto; /* Pour centrer les cartes horizontalement */
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    text-decoration: none;
-    color: inherit;
+    .clickable-card {
+        max-width: 300px;
+        /* Ajoutez la largeur maximale que vous souhaitez pour vos cartes */
+        margin: 0 auto;
+        /* Pour centrer les cartes horizontalement */
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        text-decoration: none;
+        color: inherit;
 
-}
+    }
 
-.clickable-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    .clickable-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 
-}
+    }
 
-.container {
-    margin-top: 40px;
-    text-align: center;
-}
+    .container {
+        margin-top: 40px;
+        text-align: center;
+    }
 
 
 
+    .icon-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-item:hover .bg-light {
+        background-color: blue; /* Remplacez par la couleur que vous souhaitez au survol */
+    }

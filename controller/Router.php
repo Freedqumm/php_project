@@ -4,17 +4,20 @@ require_once 'WelcomeController.php';
 require_once 'ProductsController.php';
 require_once 'ErrorController.php';
 require_once 'BuyController.php';
+require_once 'CustomerController.php';
+require_once 'ConfirmedController.php';
 require_once 'CartController.php';
 require_once 'OrderController.php';
 require_once 'PaymentController.php';
 class Router
 {
     private $twig;
-    private $url;
     private $ctrlWelcome;
     private $ctrlProducts;
     private $ctrlError;
     private $ctrlBuy;
+    private $ctrlCustomer;
+    private $ctrlConfirmed;
     private $ctrlCart;
     private $ctrlOrder;
     private $ctrlPayment;
@@ -25,6 +28,8 @@ class Router
         $this->ctrlProducts = new ProductsController();
         $this->ctrlError = new ErrorController();
         $this->ctrlBuy = new BuyController();
+        $this->ctrlCustomer = new CustomerController();
+        $this->ctrlConfirmed = new ConfirmedController();
         $this->ctrlCart = new CartController();
         $this->ctrlOrder = new OrderController();
         $this->ctrlPayment = new PaymentController();
@@ -64,8 +69,28 @@ class Router
                     $this->ctrlPayment->render($this->twig);
                     break;
                     
+                    case 'inscription':
+                        $this->ctrlCustomer->showRegistrationForm($this->twig);
+                        break;
+                    case 'process-registration':
+                        $this->ctrlCustomer->processRegistration();
+                        break;
+
+                    case 'inscriptionConfirmed':
+                        $this->ctrlConfirmed->render($this->twig);
+                        break;
+
+
+                    case 'process-login':
+                        $this->ctrlCustomer->processLogin();
+                        break;
+
+                    case 'logout':
+                        $this->ctrlCustomer->processLogout();
+                        break;
+
                 default:
-                    $this->ctrlProducts->render($this->twig, $_GET['page']);
+                    $this->ctrlProducts->render($this->twig, $_GET['page'] );
             }
         } else {
             $this->ctrlWelcome->render($this->twig);
