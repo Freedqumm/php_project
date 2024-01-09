@@ -9,6 +9,7 @@ require_once 'ConfirmedController.php';
 require_once 'CartController.php';
 require_once 'OrderController.php';
 require_once 'PaymentController.php';
+require_once 'OrderCompletedController.php';
 class Router
 {
     private $twig;
@@ -21,6 +22,7 @@ class Router
     private $ctrlCart;
     private $ctrlOrder;
     private $ctrlPayment;
+    private $ctrlOrderCompleted;
     public function __construct($twig)
     {
         $this->twig = $twig;
@@ -33,6 +35,7 @@ class Router
         $this->ctrlCart = new CartController();
         $this->ctrlOrder = new OrderController();
         $this->ctrlPayment = new PaymentController();
+        $this->ctrlOrderCompleted = new OrderCompletedController();
     }
 
     public function route()
@@ -40,8 +43,8 @@ class Router
         ####################################################################################################
         ## METTRE UN TRY CATCH LE MOMENT VENU !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#
         ####################################################################################################
-        
-        
+
+
 
 
         if (isset($_GET['page'])) {
@@ -53,7 +56,7 @@ class Router
                 case 'cart':
                     $this->ctrlCart->render($this->twig);
                     break;
-                    
+
                 case 'buy':
                     if (isset($_GET['product'])) {
                         $this->ctrlBuy->render($this->twig, $_GET['product']);
@@ -64,33 +67,37 @@ class Router
                 case 'order':
                     $this->ctrlOrder->render($this->twig);
                     break;
-                
+
                 case 'payment':
                     $this->ctrlPayment->render($this->twig);
                     break;
-                    
-                    case 'inscription':
-                        $this->ctrlCustomer->showRegistrationForm($this->twig);
-                        break;
-                    case 'process-registration':
-                        $this->ctrlCustomer->processRegistration();
-                        break;
 
-                    case 'inscriptionConfirmed':
-                        $this->ctrlConfirmed->render($this->twig);
-                        break;
+                case 'inscription':
+                    $this->ctrlCustomer->showRegistrationForm($this->twig);
+                    break;
+                case 'process-registration':
+                    $this->ctrlCustomer->processRegistration();
+                    break;
+
+                case 'inscriptionConfirmed':
+                    $this->ctrlConfirmed->render($this->twig);
+                    break;
 
 
-                    case 'process-login':
-                        $this->ctrlCustomer->processLogin();
-                        break;
+                case 'process-login':
+                    $this->ctrlCustomer->processLogin();
+                    break;
 
-                    case 'logout':
-                        $this->ctrlCustomer->processLogout();
-                        break;
+                case 'logout':
+                    $this->ctrlCustomer->processLogout();
+                    break;
+
+                case 'orderCompleted':
+                    $this->ctrlOrderCompleted->render($this->twig);
+                    break;
 
                 default:
-                    $this->ctrlProducts->render($this->twig, $_GET['page'] );
+                    $this->ctrlProducts->render($this->twig, $_GET['page']);
             }
         } else {
             $this->ctrlWelcome->render($this->twig);

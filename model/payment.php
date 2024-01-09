@@ -1,6 +1,8 @@
 <?php
 
+
 require_once "../public/rsc/fpdf.php";
+
 
 session_start();
 
@@ -97,4 +99,11 @@ $pdf->ln();
 
 
 
-$pdf->Output();
+$pdf->Output("F", "../public/rsc/docs/Facture.pdf");
+
+
+
+header("Location: ../public/?page=orderCompleted");
+
+
+exit();
