@@ -32,7 +32,7 @@
 								<th>Produit</th>
 								<th>Prix unitaire</th>
 								<th>Quantité</th>
-								<th></th>
+								
 								<th>Total</th>
 							</tr>
 						</thead>
@@ -56,33 +56,29 @@
 								</tr>
 							{% endfor %}
 							<tr class="table-info">
-								<td colspan="4">Total</td>
+								<td colspan="3">Total</td>
 								<td>{{ totalAmount|number_format(2, '.', ' ') }}
 									€</td>
 							</tr>
 						</tbody>
 					</table>
                     </div>
-                    <div class="row">
-					<a href="?page=order">
-						<input type="submit" value="Passer la commande">
-					</a>
-                    </div>
+
 				{% else %}
 					<p>Votre panier est vide.</p>
 				{% endif %}
 			</div>
 
 			<div class="payment-buttons">
-				<form action="process_payment.php" method="post" style="display: inline;">
+				<form action="../model/payment.php" method="post" style="display: inline;">
 					<input type="hidden" name="payment_method" value="cheque">
 					<button type="submit" class="btn btn-success">Payer par Chèque</button>
 				</form>
 
-				<form action="process_payment.php" method="post" style="display: inline;">
+				<a href="https://www.paypal.com/fr/home" method="post" style="display: inline;">
 					<input type="hidden" name="payment_method" value="paypal">
 					<button type="submit" class="btn btn-primary">Payer par PayPal</button>
-				</form>
+				</a>
 			</div>
 
 		</body>
