@@ -3,6 +3,7 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
     $id = $_POST['item_id'];
     $quantity = $_POST['quantity'];
 
@@ -40,7 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $_SESSION['cart'][] = array('id' => $id, 'name' => $name, 'image' => $image, 'price' => $price, 'quantity' => $quantity);
     }
-
 
     header("Location: ../public/?page=buy");
 }

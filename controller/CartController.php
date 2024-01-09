@@ -11,7 +11,7 @@ class CartController
         }
 
         if (isset($_SESSION['user'])) {
-            echo $twig->render('cart.twig', ['user' => $_SESSION['user']]);
+            echo $twig->render('cart.twig', ['cart' => $_SESSION['cart'], 'user' => $_SESSION['user']]);
         } else {
             echo $twig->render('cart.twig', ['cart' => $_SESSION['cart']]);
         }

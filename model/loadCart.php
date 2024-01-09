@@ -18,15 +18,14 @@ try {
     $id = $_SESSION['user']['id'];
     $query = $db->prepare("SELECT idProduct, quantite FROM cart WHERE idClient = $id");
     $query->execute();
-    $cart = $query->fetch(PDO::FETCH_ASSOC);
+    $cart = $query->fetchAll(PDO::FETCH_ASSOC);
     
     print_r($cart);
     if (!is_bool($cart)) {
-        $product = getProduct($cart['idProduct']);
         foreach ($cart as $product) {
-            $item = getProduct($cart['idProduct']);
-            $item = $item[0];
-            $_SESSION['cart'][] = array('id' => $item['id'], 'name' => $item['name'], 'image' => $item['image'], 'price' => $item['price'], 'quantity' => $cart['quantite']);
+            $item = getProduct($product['idProduct'])[0];
+
+            $_SESSION['cart'][] = array('id' => $item['id'], 'name' => $item['name'], 'image' => $item['image'], 'price' => $item['price'], 'quantity' => $product['quantite']);
         }
     }
     
@@ -37,4 +36,4 @@ try {
 
 
 
-//header("Location: ../public/?page=default");
+header("Location: ../public/?page=default");
