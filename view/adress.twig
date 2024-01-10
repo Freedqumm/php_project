@@ -21,30 +21,46 @@
 			<br>
 			<br>
 			<br>
+			{% if user is defined %}
 
-			<form class="px-4 py-3" method="post" action="">
-				<div class="mb-3">
-					<label for="exampleDropdownFormPassword1" class="form-label" style="float: left">Adresse
-					</label>
-					<input type="text" name="Nom" class="form-control" id="exampleDropdownFormPassword1" placeholder="" style="width: 50%" required>
-					<label for="exampleDropdownFormPassword1" class="form-label" style="float: left">Ville
-					</label>
-					<input type="text" name="Prénom" class="form-control" id="exampleDropdownFormPassword1" placeholder="" required>
+				<div class="mb-3 border p-3 rounded">
+					<label for="adresseDropdown" class="form-label">Adresse enregistrée</label>
+					<p class="mb-0">{{ user.adress }},
+						{{ user.postcode }},
+						{{ user.ville }}</p>
+
+					<a href="../model/oldAdress.php">
+						<br>
+						<button type="submit" class="btn btn-primary">Utiliser l'adresse enregistrée
+						</button>
+					</a>
 				</div>
-				<div class="mb-3">
-					<label for="exampleDropdownFormEmail1" class="form-label" style="float: left">Code Postal</label>
-					<input type="number" name="number" class="form-control" id="exampleDropdownFormEmail1" placeholder="" required>
-				</div>
 
-				<br>
 
-			</form>
-			<a href="?page=payment">
-				<input type="submit" value="Enregistrer l'adresse">
-			</a>
+			{% endif %}
+			<div class="border p-3 rounded">
+				<form action="../model/newAdress.php" method="post">
+					<div class="mb-3">
+						<label for="inputVille" class="form-label">Ville</label>
+						<input type="text" name="city" class="form-control" id="inputVille" placeholder="Nom de votre ville" style="width: 50%" required>
+					</div>
+					<div class="mb-3">
+						<label for="inputCodePostal" class="form-label">Code Postal</label>
+						<input type="number" name="postcode" class="form-control" id="inputCodePostal" placeholder="Code postal" style="width: 50%" required>
+					</div>
+					<div class="mb-3">
+						<label for="inputAdresse" class="form-label">Adresse</label>
 
+						<input type="text" name="adress" class="form-control" id="inputAdresse" placeholder="Votre adresse" required>
+
+					</div>
+
+					<br>
+
+					<button type="submit" class="btn btn-primary">Utiliser cette nouvelle adresse</button>
+
+				</form>
+			</div>
 		</body>
-
 	</html>
-
-{%  endblock %}
+</form></body></html>{%  endblock %}

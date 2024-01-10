@@ -41,9 +41,24 @@ class PDF extends FPDF
 $pdf = new PDF();
 $pdf->AddPage();
 
+
 // Titre 
 $pdf->SetFont('Arial', 'B', 20);
 $pdf->Cell(38, 12, "Facture pour votre commande", "");
+
+$pdf->Ln();
+$pdf->Ln();
+
+// Client 
+$pdf->SetFont('Arial', '', 10);
+$pdf->Cell(130, 12, "", "");
+$pdf->Cell(52, 12, $_SESSION['user']['surname']." ".$_SESSION['user']['forname'], "TLR");
+$pdf->SetY($pdf->GetY() + 6);
+$pdf->Cell(130, 12, "", "");
+$pdf->Cell(52, 12, "73bis rue du marechal leclerc", "LR");
+$pdf->SetY($pdf->GetY() + 6);
+$pdf->Cell(130, 12, "", "");
+$pdf->Cell(52, 12, $_SESSION['adress'][1]." ".$_SESSION['adress'][0], "BLR");
 
 $pdf->Ln();
 $pdf->Ln();
@@ -103,7 +118,7 @@ $pdf->Output("F", "../public/rsc/docs/Facture.pdf");
 
 
 
-header("Location: ../public/?page=orderCompleted");
+header("Location: ../model/order.php");
 
 
 exit();
