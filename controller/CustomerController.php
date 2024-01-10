@@ -44,7 +44,11 @@ class CustomerController
             var_dump($user);
             if ($password == $user['password']) {
                 session_start();
-                $_SESSION['user'] = $user;
+                if ($email == "admin@gmail.com") {
+                    $_SESSION['admin'] = $user;
+                } else {
+                    $_SESSION['user'] = $user;
+                }
                 header('Location: ../public/?page=default');
                 exit();
             } else {
@@ -54,7 +58,6 @@ class CustomerController
             echo "Utilisateur non trouvé.";
         }
     }
-
 
 
     public function processLogout()

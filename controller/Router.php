@@ -9,6 +9,7 @@ require_once 'ConfirmedController.php';
 require_once 'CartController.php';
 require_once 'OrderController.php';
 require_once 'PaymentController.php';
+require_once 'ListOrderController.php';
 class Router
 {
     private $twig;
@@ -21,6 +22,7 @@ class Router
     private $ctrlCart;
     private $ctrlOrder;
     private $ctrlPayment;
+    private $ctrlListOrder;
     public function __construct($twig)
     {
         $this->twig = $twig;
@@ -33,6 +35,8 @@ class Router
         $this->ctrlCart = new CartController();
         $this->ctrlOrder = new OrderController();
         $this->ctrlPayment = new PaymentController();
+        $this->ctrlListOrder = new ListOrderController();
+
     }
 
     public function route()
@@ -89,6 +93,9 @@ class Router
                         $this->ctrlCustomer->processLogout();
                         break;
 
+                    case 'listorder':
+                        $this->ctrlListOrder->render($this->twig);
+                        break;
                 default:
                     $this->ctrlProducts->render($this->twig, $_GET['page'] );
             }

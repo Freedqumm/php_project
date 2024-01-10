@@ -7,7 +7,9 @@ class OrderController {
         session_start();
         if (isset($_SESSION['user'])) {
             echo $twig->render('adress.twig', ['user' => $_SESSION['user']]);
-        } else {
+        } elseif (isset($_SESSION['admin'])) {
+            echo $twig->render('adress.twig', ['admin' => $_SESSION['admin']]);
+        }else {
             echo $twig->render('adress.twig');
         }
     }
