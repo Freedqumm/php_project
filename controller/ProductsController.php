@@ -16,7 +16,9 @@ class ProductsController
                 session_start();
                 if (isset($_SESSION['user'])) {
                     echo $twig->render('Products.twig', ['user' => $_SESSION['user'], 'products' => $products]);
-                } else {
+                } elseif (isset($_SESSION['admin'])) {
+                    echo $twig->render('Products.twig', ['admin' => $_SESSION['admin'], 'products' => $products]);
+                }else {
                     echo $twig->render('Products.twig', ['products' => $products]);
                 }
                 break;
@@ -25,7 +27,9 @@ class ProductsController
                 session_start();
                 if (isset($_SESSION['user'])) {
                     echo $twig->render('Products.twig', ['user' => $_SESSION['user'], 'products' => $products]);
-                } else {
+                } elseif (isset($_SESSION['admin'])) {
+                    echo $twig->render('Products.twig', ['admin' => $_SESSION['admin'], 'products' => $products]);
+                }else {
                     echo $twig->render('Products.twig', ['products' => $products]);
                 }
                 break;
@@ -34,6 +38,8 @@ class ProductsController
                 session_start();
                 if (isset($_SESSION['user'])) {
                     echo $twig->render('Products.twig', ['user' => $_SESSION['user'], 'products' => $products]);
+                }elseif (isset($_SESSION['admin'])) {
+                    echo $twig->render('Products.twig', ['admin' => $_SESSION['admin'], 'products' => $products]);
                 } else {
                     echo $twig->render('Products.twig', ['products' => $products]);
                 }

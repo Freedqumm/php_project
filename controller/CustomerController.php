@@ -44,8 +44,12 @@ class CustomerController
             var_dump($user);
             if ($password == $user['password']) {
                 session_start();
-                $_SESSION['user'] = $user;
-                header('Location: ../model/loadCart.php');
+                if ($email == "admin@gmail.com") {
+                    $_SESSION['admin'] = $user;
+                } else {
+                    $_SESSION['user'] = $user;
+                }
+                header('Location: ../public/?page=default');
                 exit();
             } else {
                 echo "Mot de passe incorrect. Voici ce que tu as entré : $password";
