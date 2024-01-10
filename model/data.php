@@ -3,7 +3,7 @@
 function getBiscuits()
 {
     try {
-        $db = new PDO(
+            $db = new PDO(
             'mysql:host=localhost;dbname=web4shop;charset=utf8',
             'root'
         );
@@ -49,6 +49,24 @@ function getFruits()
     }
 
     $query = $db->prepare('SELECT * FROM PRODUCTS WHERE cat_id = 3');
+    $query->execute();
+    $products = $query->fetchAll();
+
+    return $products;
+}
+
+function getProduct($id){
+    try {
+        $db = new PDO(
+            'mysql:host=localhost;dbname=web4shop;charset=utf8',
+            'root'
+        );
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+
+
+    $query = $db->prepare("SELECT * FROM PRODUCTS WHERE id = $id ");
     $query->execute();
     $products = $query->fetchAll();
 

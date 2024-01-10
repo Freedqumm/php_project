@@ -1,0 +1,66 @@
+{% extends 'layout.twig'%}
+
+{% block content %}
+	<!doctype html>
+	<html>
+
+		<head>
+			<title>ISIWEBShop</title>
+			<meta charset='UTF-8'>
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+			<link rel="stylesheet" href="Contenu/style.css">
+
+		</head>
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+		<body>
+
+			<br>
+			<br>
+			<br>
+			<br>
+			{% if user is defined %}
+
+				<div class="mb-3 border p-3 rounded">
+					<label for="adresseDropdown" class="form-label">Adresse enregistrée</label>
+					<p class="mb-0">{{ user.adress }},
+						{{ user.postcode }},
+						{{ user.ville }}</p>
+
+					<a href="../model/oldAdress.php">
+						<br>
+						<button type="submit" class="btn btn-primary">Utiliser l'adresse enregistrée
+						</button>
+					</a>
+				</div>
+
+
+			{% endif %}
+			<div class="border p-3 rounded">
+				<form action="../model/newAdress.php" method="post">
+					<div class="mb-3">
+						<label for="inputVille" class="form-label">Ville</label>
+						<input type="text" name="city" class="form-control" id="inputVille" placeholder="Nom de votre ville" style="width: 50%" required>
+					</div>
+					<div class="mb-3">
+						<label for="inputCodePostal" class="form-label">Code Postal</label>
+						<input type="number" name="postcode" class="form-control" id="inputCodePostal" placeholder="Code postal" style="width: 50%" required>
+					</div>
+					<div class="mb-3">
+						<label for="inputAdresse" class="form-label">Adresse</label>
+
+						<input type="text" name="adress" class="form-control" id="inputAdresse" placeholder="Votre adresse" required>
+
+					</div>
+
+					<br>
+
+					<button type="submit" class="btn btn-primary">Utiliser cette nouvelle adresse</button>
+
+				</form>
+			</div>
+		</body>
+	</html>
+</form></body></html>{%  endblock %}

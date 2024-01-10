@@ -1,55 +1,77 @@
-{% extends 'layout.twig'%}
+{% extends 'layout.twig' %}
 
 {% block content %}
-<!doctype html>
-<html>
+    <!doctype html>
+    <html>
 
-<head>
-    <title>ISIWEBShop</title>
-    <meta charset='UTF-8'>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="Contenu/style.css">
+    <head>
+        <title>ISIWEBShop</title>
+        <meta charset='UTF-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="Contenu/style.css">
 
-</head>
+    </head>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
 
-<body>
+    <body>
 
-<br>
-<br>
-<br>
-<br>
-
-<h1 style="margin-left: 25px"> Inscrivez-vous ! </h1>
-<br>
-<form class="px-4 py-3" method="post" action="">
-    <div class="mb-3">
-        <label for="exampleDropdownFormPassword1" class="form-label" style="float: left">Nom</label>
-        <input type="text" name="Nom" class="form-control" id="exampleDropdownFormPassword1" placeholder="AUDIER" style="width: 50%" required>
-        <label for="exampleDropdownFormPassword1" class="form-label" style="float: left">Prénom</label>
-        <input type="text" name="Prénom" class="form-control" id="exampleDropdownFormPassword1" placeholder="Philippe" required>
-    </div>
-    <div class="mb-3">
-        <label for="exampleDropdownFormEmail1" class="form-label" style="float: left">Adresse e-mail</label>
-        <input type="email" name="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com" required>
-    </div>
-    <div class="mb-3">
-        <label for="exampleDropdownFormPassword1" class="form-label" style="float: left">Mot de passe</label>
-        <input type="password" name="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Mot de passe" required>
-    </div>
     <br>
-    <button type="submit" name="envoi" class="btn btn-primary">S'inscrire</button>
-</form>
+    <br>
+
+    <h1 style="margin-left: 25px"> Inscrivez-vous ! </h1>
+    <br>
+    <form action="?page=process-registration" method="post" class="px-4 py-3">
+        <div class="mb-3">
+            <label for="exampleDropdownFormSurname1" class="form-label" style="float: left">Nom</label>
+            <input type="text" name="nom" class="form-control" id="exampleDropdownFormSurname1" placeholder="DUPONT"
+                   required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleDropdownFormForname1" class="form-label" style="float: left">Prénom</label>
+            <input type="text" name="prenom" class="form-control" id="exampleDropdownFormForname1" placeholder="Jean"
+                   required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleDropdownFormEmail1" class="form-label" style="float: left">Adresse e-mail</label>
+            <input type="email" name="email" class="form-control" id="exampleDropdownFormEmail1"
+                   placeholder="email@example.com" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleDropdownFormPassword1" class="form-label" style="float: left">Mot de passe</label>
+            <input type="password" name="password" class="form-control" id="exampleDropdownFormPassword1"
+                   placeholder="Mot de passe" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleDropdownFormPhoneNumber1" class="form-label" style="float: left">Numéro de
+                téléphone</label>
+            <input type="tel" name="numero" class="form-control" id="exampleDropdownFormPhoneNumber1"
+                   placeholder="06********" oninput="this.value=this.value.replace(/[^0-9]/g,'')" maxlength="10"
+                   required>
+        </div>
+        <div class="d-flex mb-3">
+            <div class="mr-1">
+                <label for="villeInput" class="form-label" style="float: left">Ville</label>
+                <input type="text" name="ville" class="form-control" id="villeInput" placeholder="Ville" required>
+                <div class="mr-2">
+                    <label for="cpInput" class="form-label" style="float: left">Code Postal</label>
+                    <input type="text" name="code_postal" class="form-control" id="cpInput" placeholder="Code Postal" pattern="[0-9]{5}" title="Veuillez entrer 5 chiffres" maxlength="5" required>
+                </div>
+            </div>
+        </div>
+        <br>
+        <button type="submit" name="envoi" class="btn btn-primary">S'inscrire</button>
+
+    </form>
 
 
+    </body>
 
-</body>
+    </html>
 
-</html>
-
-{%  endblock %}
+{% endblock %}
