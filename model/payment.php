@@ -118,7 +118,7 @@ $pdf->Output("F", "../public/rsc/docs/Facture.pdf");
 
 
 
-header("Location: ../model/order.php");
+header("Location: ../public/?page=orderCompleted");
 
 
 exit();
