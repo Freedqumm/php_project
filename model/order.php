@@ -29,7 +29,7 @@ function saveOrder($type)
 
             // Creation d'un id client virtuel
             $usermodel = new UserModel();
-            $usermodel->saveCustomer(session_id(), "none", "none", "none", "none", $_SESSION['adress'][1], $_SESSION['adress'][0]);
+            $usermodel->saveCustomer(session_id(), "none", "none", "none", "none", $_SESSION['adress'][1], $_SESSION['adress'][0], $_SESSION['adress'][2]);
 
             // Récupération de l'id de l'utilisateur virtuel 
             $sessionId = session_id();
