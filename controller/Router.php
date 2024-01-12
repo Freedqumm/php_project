@@ -96,12 +96,15 @@ class Router
                     $this->ctrlCustomer->processLogout();
                     break;
 
-                    case 'listorder':
-                        $this->ctrlListOrder->render($this->twig);
-                        break;
+                case 'listorder':
+                    $this->ctrlListOrder->render($this->twig);
+                    break;
                 case 'orderCompleted':
                     $this->ctrlOrderCompleted->render($this->twig);
                     break;
+                case 'confirm_order':
+                    $this->ctrlOrderCompleted->confirm_order();
+
 
                 default:
                     $this->ctrlProducts->render($this->twig, $_GET['page']);

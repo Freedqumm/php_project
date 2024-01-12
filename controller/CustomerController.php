@@ -22,9 +22,10 @@ class CustomerController
         $numero = $_POST['numero'];
         $code_postal = $_POST['code_postal'];
         $ville = $_POST['ville'];
+        $adress = $_POST['adress'];
 
         $customerModel = new UserModel();
-        $customerModel->saveCustomer($nom, $prenom, $email, $password, $numero, $code_postal, $ville);
+        $customerModel->saveCustomer($nom, $prenom, $email, $password, $numero, $adress, $code_postal, $ville);
 
         header('Location: ../public/?page=inscriptionConfirmed');
         exit();
@@ -32,30 +33,39 @@ class CustomerController
 
     public function processLogin()
     {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $password = sha1($password);
+        // Vérifier si les indices 'email' et 'password' existent dans $_POST
+        if (isset($_POST['email']) && isset($_POST['password'])) {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $password = sha1($password);
 
-        $userModel = new UserModel();
-        $user = $userModel->getCustomerByEmail($email);
+            $userModel = new UserModel();
+            $user = $userModel->getCustomerByEmail($email);
 
-        if (!empty($user)) {
-            echo "Utilisateur trouvé : ";
-            var_dump($user);
-            if ($password == $user['password']) {
-                session_start();
-                if ($email == "admin@gmail.com") {
-                    $_SESSION['admin'] = $user;
+            // Stocker l'URL actuelle dans la session
+            $_SESSION['redirect_url'] = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '../public/?page=default';
+            $redirectUrl = $_SESSION['redirect_url'];
+
+            if (!empty($user)) {
+                echo "Utilisateur trouvé : ";
+                var_dump($user);
+                if ($password == $user['password']) {
+                    session_start();
+                    if ($email == "admin@gmail.com") {
+                        $_SESSION['admin'] = $user;
+                    } else {
+                        $_SESSION['user'] = $user;
+                    }
+                    header('Location: ' . $redirectUrl);
+                    exit();
                 } else {
-                    $_SESSION['user'] = $user;
+                    echo "Mot de passe incorrect. Voici ce que tu as entré : $password";
                 }
-                header('Location: ../public/?page=default');
-                exit();
             } else {
-                echo "Mot de passe incorrect. Voici ce que tu as entré : $password";
+                echo "Utilisateur non trouvé.";
             }
         } else {
-            echo "Utilisateur non trouvé.";
+            echo "Indices 'email' et/ou 'password' non définis dans \$_POST.";
         }
     }
 
