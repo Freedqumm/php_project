@@ -2,7 +2,7 @@
 
 
 require_once "../public/rsc/fpdf.php";
-
+require_once "order.php";
 
 session_start();
 
@@ -117,7 +117,7 @@ $pdf->ln();
 $pdf->Output("F", "../public/rsc/docs/Facture.pdf");
 
 
-
+saveOrder("cheque");
 header("Location: ../public/?page=orderCompleted");
 
 
