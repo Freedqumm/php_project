@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f527463-9e6f-4c96-bb00-9b3588fbb81f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/controller/ListOrderController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/ListOrder.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/BuyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/BuyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/CustomerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/PaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/ProductsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/Router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/WelcomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/WelcomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/data.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/data.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/addedToCart.twig" beforeDir="false" afterPath="$PROJECT_DIR$/view/addedToCart.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/layout.twig" beforeDir="false" afterPath="$PROJECT_DIR$/view/layout.twig" afterDir="false" />
-    </list>
+    <list default="true" id="7f527463-9e6f-4c96-bb00-9b3588fbb81f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,21 +37,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;tom&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/2023-sae-105-KentinMartel&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "tom__final",
+    "last_opened_file_path": "C:/xampp/htdocs/2023-sae-105-KentinMartel",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
