@@ -96,9 +96,9 @@ class Router
                     $this->ctrlCustomer->processLogout();
                     break;
 
-                    case 'listorder':
-                        $this->ctrlListOrder->render($this->twig);
-                        break;
+                case 'listorder':
+                    $this->ctrlListOrder->render($this->twig);
+                    break;
                 case 'orderCompleted':
                     $this->ctrlOrderCompleted->render($this->twig);
                     break;

@@ -22,9 +22,10 @@ class CustomerController
         $numero = $_POST['numero'];
         $code_postal = $_POST['code_postal'];
         $ville = $_POST['ville'];
+        $add = $_POST['adress'];
 
         $customerModel = new UserModel();
-        $customerModel->saveCustomer($nom, $prenom, $email, $password, $numero, $code_postal, $ville);
+        $customerModel->saveCustomer($nom, $prenom, $email, $password, $numero, $code_postal, $ville, $add);
 
         header('Location: ../public/?page=inscriptionConfirmed');
         exit();
