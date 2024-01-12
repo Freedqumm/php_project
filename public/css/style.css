@@ -14,8 +14,8 @@
     }
 
     .site-footer {
-        background-color: #333;
-        color: #fff;
+        background-color: lightgray;
+        color: black;
         padding: 20px 0;
         margin-top: auto;
         /* Pousse le footer vers le bas */
@@ -29,13 +29,12 @@
     }
 
     .site-footer a {
-        color: #fff;
+        color: black;
         text-decoration: none;
     }
 
     .site-footer a:hover {
-        color: #ffcc00;
-        /
+        color: darkslateblue;
     }
 
     .card-group {
@@ -80,5 +79,8 @@
     }
 
     .nav-item:hover .bg-light {
-        background-color: blue; /* Remplacez par la couleur que vous souhaitez au survol */
+        background-color: blue;
+    }
+    nav.bg-body-tertiary{
+        background-color: lightgray !important;
     }
