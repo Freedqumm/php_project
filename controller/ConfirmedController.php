@@ -10,7 +10,14 @@ class ConfirmedController
     public function render($twig)
     {
 
-        echo $twig->render('inscriptionConfirmed.twig');
+        session_start();
+        if (isset($_SESSION['user'])) {
+            echo $twig->render('inscriptionConfirmed.twig', ['user' => $_SESSION['user']]);
+        } elseif (isset($_SESSION['admin'])) {
+            echo $twig->render('inscriptionConfirmed.twig', ['admin' => $_SESSION['admin']]);
+        }else {
+            echo $twig->render('inscriptionConfirmed.twig');
+        }
     }
 
 

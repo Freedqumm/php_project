@@ -11,7 +11,7 @@ Pour lancer le site, suivez ces étapes simples :
 
 1. **Préparation :** Assurez-vous d'avoir toutes les dépendances nécessaires dans le dossier 'vendor'. Si nécessaire, exécutez les commandes suivantes à la racine du projet :
    ```
-   rm -rf vendor/
+   rm vendor/
    composer require "twig/twig:^3.7"
    composer install
    ```
