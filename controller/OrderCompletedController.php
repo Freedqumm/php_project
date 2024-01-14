@@ -7,8 +7,13 @@ class OrderCompletedController{
 
     public function render($twig){
 
-
-        echo $twig->render("orderCompleted.twig");
+        if (isset($_SESSION['user'])) {
+            echo $twig->render('orderCompleted.twig', ['user' => $_SESSION['user']]);
+        } elseif (isset($_SESSION['admin'])) {
+            echo $twig->render('orderCompleted.twig', ['admin' => $_SESSION['admin']]);
+        }else {
+            echo $twig->render('orderCompleted.twig');
+        }
     }
 
     public function confirm_order()
