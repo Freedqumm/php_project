@@ -49,8 +49,6 @@ class CustomerController
             $redirectUrl = $_SESSION['redirect_url'];
 
             if (!empty($user)) {
-                echo "Utilisateur trouvé : ";
-                var_dump($user);
                 if ($password == $user['password']) {
                     session_start();
                     if ($email == "admin@gmail.com") {
@@ -61,10 +59,10 @@ class CustomerController
                     header('Location: ' . $redirectUrl);
                     exit();
                 } else {
-                    echo "Mot de passe incorrect. Voici ce que tu as entré : $password";
+                    echo "Utilisateur ou mot de passe incorrect.";
                 }
             } else {
-                echo "Utilisateur non trouvé.";
+                echo "Utilisateur ou mot de passe incorrect.";
             }
         } else {
             echo "Indices 'email' et/ou 'password' non définis dans \$_POST.";

@@ -71,12 +71,12 @@ function saveOrder($type)
             foreach ($_SESSION['cart'] as $product) {
 
                 $stmt = $db->prepare("INSERT INTO orderitems (order_id, product_id, quantity)  VALUES (?, ?, ?) ");
-                $stmt->execute([$id, $product['id'], $product['quantity']]);
+                $stmt->execute([$id['id'], $product['id'], $product['quantity']]);
             }
         }
 
         // On vide la cart
-        unset($_SESSION['cart']);
+            unset($_SESSION['cart']);
 
     } catch (Exception $e) {
         echo ("Problem PDO" . $e->getMessage());

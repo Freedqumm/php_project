@@ -38,7 +38,15 @@
                             <td scope="row" class="text-center align-middle px-4">{{ order.id }}</td>
                             <td class="text-center align-middle px-4">{{ order.surname }}</td>
                             <td class="text-center align-middle px-4">{{ order.forname }}</td>
-                            <td class="text-center align-middle px-4">{{ order.adress }}, {{ order.postcode }} {{ order.ville }}</td>
+                            {% if newAdress is defined and newAdress %}
+
+                                <td class="text-center align-middle px-4">
+                                    {{ newAdress[0] }}, {{ newAdress[1] }} {{ newAdress[2] }}
+                                </td>
+
+                            {% else %}
+                                <td class="text-center align-middle px-4">{{ order.adress }}, {{ order.postcode }} {{ order.ville }}</td>
+                            {% endif %}
                             <td class="text-center align-middle px-4">
                                 {% for orderItem in cartDetails.orderItems %}
                                     {% for product in cartDetails.products %}

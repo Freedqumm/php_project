@@ -6,7 +6,7 @@ class OrderCompletedController{
     }
 
     public function render($twig){
-
+        session_start();
         if (isset($_SESSION['user'])) {
             echo $twig->render('orderCompleted.twig', ['user' => $_SESSION['user']]);
         } elseif (isset($_SESSION['admin'])) {
