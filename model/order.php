@@ -50,28 +50,32 @@ function saveOrder($type)
             $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
             $stmt->execute();
             $id = $stmt->fetch();
+            $id = $id['id'];
         } else {
-            // Récupération de l'id de 
+            // Récupération de l'id de de l'utilisateur virtuel
             $sessionId = session_id();
             $query = $db->prepare("SELECT id FROM customers WHERE surname = :userName");
             $query->bindParam(':userName', $sessionId, PDO::PARAM_STR);
             $query->execute();
             $id = $query->fetchAll();
+            
             $id = $id[0]['id'];
+            print_r($id);   
 
             $stmt = $db->prepare("SELECT id FROM orders WHERE customer_id = :userId");
             $stmt->bindParam(':userId', $id, PDO::PARAM_INT);
             $stmt->execute();
             $id = $stmt->fetch();
             $id = $id['id'];
-
+            
         }
 
         if (isset($_SESSION['cart'])) {
             foreach ($_SESSION['cart'] as $product) {
+                
 
                 $stmt = $db->prepare("INSERT INTO orderitems (order_id, product_id, quantity)  VALUES (?, ?, ?) ");
-                $stmt->execute([$id['id'], $product['id'], $product['quantity']]);
+                $stmt->execute([$id, $product['id'], $product['quantity']]);
             }
         }
 

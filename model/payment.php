@@ -24,8 +24,8 @@ class PDF extends FPDF
         foreach ($data as $row) {
             foreach ($row as $col) {
 
-                if (substr($col, -3) === "jpg" || substr($col, -3) === "png" ) {   
-                    
+                if (substr($col, -3) === "jpg" || substr($col, -3) === "png") {
+
                     $this->Image("../public/images/$col", $this->GetX() + 5, $this->GetY(), 12);
                     $this->Cell(38, $height, "", "TB");
                 } else {
@@ -52,13 +52,15 @@ $pdf->Ln();
 // Client 
 $pdf->SetFont('Arial', '', 10);
 $pdf->Cell(130, 12, "", "");
-$pdf->Cell(52, 12, $_SESSION['user']['surname']." ".$_SESSION['user']['forname'], "");
+if (isset($_SESSION['user'])) {
+    $pdf->Cell(52, 12, $_SESSION['user']['surname'] . " " . $_SESSION['user']['forname'], "");
+}
 $pdf->SetY($pdf->GetY() + 6);
 $pdf->Cell(130, 12, "", "");
 $pdf->Cell(52, 12, $_SESSION['adress'][2], "");
 $pdf->SetY($pdf->GetY() + 6);
 $pdf->Cell(130, 12, "", "");
-$pdf->Cell(52, 12, $_SESSION['adress'][1]." ".$_SESSION['adress'][0], "");
+$pdf->Cell(52, 12, $_SESSION['adress'][1] . " " . $_SESSION['adress'][0], "");
 
 $pdf->Ln();
 $pdf->Ln();
@@ -100,7 +102,7 @@ $str = iconv('UTF-8', 'windows-1252', "15 Bd André Latarjet, 69100 Villeurbanne
 $pdf->ln();
 $pdf->cell(50, 6, "");
 $pdf->cell(30, 6, $str);
- 
+
 
 $pdf->ln();
 $pdf->ln();
