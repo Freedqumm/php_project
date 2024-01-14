@@ -55,7 +55,7 @@ $pdf->Cell(130, 12, "", "");
 $pdf->Cell(52, 12, $_SESSION['user']['surname']." ".$_SESSION['user']['forname'], "TLR");
 $pdf->SetY($pdf->GetY() + 6);
 $pdf->Cell(130, 12, "", "");
-$pdf->Cell(52, 12, "73bis rue du marechal leclerc", "LR");
+$pdf->Cell(52, 12, $_SESSION['adress'][2], "LR");
 $pdf->SetY($pdf->GetY() + 6);
 $pdf->Cell(130, 12, "", "");
 $pdf->Cell(52, 12, $_SESSION['adress'][1]." ".$_SESSION['adress'][0], "BLR");

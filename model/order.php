@@ -75,6 +75,9 @@ function saveOrder($type)
             }
         }
 
+        // On vide la cart
+        unset($_SESSION['cart']);
+
     } catch (Exception $e) {
         echo ("Problem PDO" . $e->getMessage());
     }
