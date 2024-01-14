@@ -74,7 +74,7 @@ class CustomerController
 
     public function processLogout()
     {
-        
+
         header('Location: ../model/storeCart.php');
         exit();
     }
