@@ -83,8 +83,8 @@ function getCart() {
         echo 'PDO problem';
     }
 
-    // Récupérer les informations des commandes
-    $queryOrders = $db->prepare('SELECT * FROM ORDERS');
+    // Récupérer les informations des commandes et des clients
+    $queryOrders = $db->prepare('SELECT o.*, c.forname, c.surname, c.adress, c.postcode, c.ville FROM ORDERS o JOIN CUSTOMERS c ON o.customer_id = c.id');
     $queryOrders->execute();
     $orders = $queryOrders->fetchAll();
 
