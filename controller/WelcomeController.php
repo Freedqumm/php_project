@@ -7,10 +7,17 @@ class WelcomeController
     {
 
     }
+
     public function render($twig)
     {
-
-        echo $twig->render('accueil.twig');
+        session_start();
+        if (isset($_SESSION['user'])) {
+            echo $twig->render('accueil.twig', ['user' => $_SESSION['user']]);
+        } elseif (isset($_SESSION['admin'])) {
+            echo $twig->render('accueil.twig', ['admin' => $_SESSION['admin']]);
+        } else {
+            echo $twig->render('accueil.twig');
+        }
     }
 
 }

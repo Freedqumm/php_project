@@ -8,89 +8,126 @@
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="../public/css/style.css">
 </head>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"  crossorigin="anonymous"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 
 <nav class="navbar bg-body-tertiary fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="?page=default">ISIWEB4SHOP</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-                <p>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">ISIWEB4SHOP </h5></p>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            Connexion
-                        </a>
-                        <div class="dropdown-menu">
-                            <form class="px-4 py-3">
-                                <div class="mb-3">
-                                    <label for="exampleDropdownFormEmail1" class="form-label">Adresse e-mail</label>
-                                    <input type="email" autocomplete="on" name="email" class="form-control"
-                                           id="exampleDropdownFormEmail1" placeholder="email@example.com">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleDropdownFormPassword1" class="form-label">Mot de passe</label>
-                                    <input type="password" name="password" class="form-control"
-                                           id="exampleDropdownFormPassword1" placeholder="Mot de passe">
-                                </div>
-                                <button type="submit" name="envoi" class="btn btn-primary">Connecter</button>
-                            </form>
-                        </div>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Nouveau ? Inscrivez vous ici</a>
-                        <a class="dropdown-item" href="#">Mot de passe oublié ?</a>
-                    </li>
-                    <br>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Voir le panier</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Payer</a>
-                    </li>
-
-                    <img src="img/panier.jpg" alt="panier"
-                         style="max-width: 200px; max-height: 200px; display: block; margin-left: auto; margin-right: auto; margin-top: 100px; margin-bottom: auto;">
-
-                </ul>
-
-            </div>
+        <div class="d-flex align-items-center">
+            <a class="navbar-brand" href="?page=default">ISIWEB4SHOP</a>
+            <a class="navbar-brand" style="font-size: 1rem;" href="?page=boissons">Boissons</a>
+            <a class="navbar-brand" style="font-size: 1rem;" href="?page=biscuits">Biscuits</a>
+            <a class="navbar-brand" style="font-size: 1rem;" href="?page=fruits">Fruits secs</a>
+        </div>
+        <div class="ms-auto">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                    aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         </div>
     </div>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+            <p>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">ISIWEB4SHOP
+            </h5>
+            </p>
+        </div>
 
+        <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                {% if user is defined and user %}
+                    <h4>Bonjour,
+                        {{ user.forname }}
+                        {{ user.surname }}.</h4>
+                    <form action="?page=logout" method="post" class="nav-item">
+                        <button type="submit" class="nav-link active">Déconnexion</button>
+                    </form>
+                {% elseif admin is defined and admin %}
+                    <h4>Bonjour administrateur</h4>
+                    <form action="?page=listorder" method="post" class="nav-item">
+                        <button type="submit" class="nav-link active">Liste des commandes</button>
+                    </form>
+                    <form action="?page=logout" method="post" class="nav-item">
+                        <button type="submit" class="nav-link active">Déconnexion</button>
+                    </form>
+
+                {% else %}
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Connexion
+                    </a>
+                    <div class="dropdown-menu">
+                        <form action="?page=process-login" method="post" class="px-4 py-3">
+                            <div class="mb-3">
+                                <label for="exampleDropdownFormEmail1" class="form-label">Adresse e-mail</label>
+                                <input type="email" autocomplete="on" name="email" class="form-control"
+                                       id="exampleDropdownFormEmail1" placeholder="email@example.com" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleDropdownFormPassword1" class="form-label">Mot de passe</label>
+                                <input type="password" name="password" class="form-control"
+                                       id="exampleDropdownFormPassword1" placeholder="Mot de passe" required>
+                            </div>
+                            <button type="submit" name="envoi" class="btn btn-primary">Connecter</button>
+                        </form>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="?page=inscription">Nouveau ? Inscrivez vous ici</a>
+                    </div>
+                    </li>
+
+                {% endif %}
+
+                <br>
+                <br>
+                <br>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="?page=cart">
+                        <div class="d-flex align-items-center border rounded p-2 transition bg-light">
+                            <div class="icon-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                     class="bi bi-basket2" viewbox="0 0 18 18">
+                                    <path d="M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0z"/>
+                                    <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6H2.163z"/>
+                                </svg>
+
+                            </div>
+                            <span class="ml-2">
+								 Voir le panier
+							</span>
+                        </div>
+                    </a>
+                </li>
+
+
+            </ul>
+
+        </div>
+    </div>
 </nav>
-
 <div class="container">
-    <br> <br>
+    <br>
+    <br>
     {% block content %}{% endblock %}
 </div>
-
 <br>
 <br>
 <br>
-
+<br>
 <footer class="site-footer">
     <div class="container1">
         <p class="float mb-1">
-            <a href="#">Back to top</a>
+            <a href="#">Retour en haut</a>
         </p>
-        <p class="mb-1"> Copyright Polytech 2023-2024</p>
-        <p class="mb-0">Site commercial créé par Noa et Tom.</p>
-        <p><a href="/"> Cliquez ici pour nous contacter.</a></p>
+        <p class="mb-1">
+            © Copyright Polytech 2023-2024</p>
+        <p class="mb-0">Site commercial créé par PETEL et TOUPENCE.</p>
     </div>
 </footer>
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"  crossorigin="anonymous"></script>
-
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </html>

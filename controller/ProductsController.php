@@ -7,20 +7,42 @@ class ProductsController
     {
 
     }
+
     public function render($twig, $type)
     {
-        switch($type){
+        switch ($type) {
             case 'biscuits':
                 $products = getBiscuits();
-                echo $twig->render('Products.twig', ['products' => $products]);
+                session_start();
+                if (isset($_SESSION['user'])) {
+                    echo $twig->render('Products.twig', ['user' => $_SESSION['user'], 'products' => $products]);
+                } elseif (isset($_SESSION['admin'])) {
+                    echo $twig->render('Products.twig', ['admin' => $_SESSION['admin'], 'products' => $products]);
+                }else {
+                    echo $twig->render('Products.twig', ['products' => $products]);
+                }
                 break;
             case 'boissons':
                 $products = getBoissons();
-                echo $twig->render('Products.twig', ['products' => $products]);
+                session_start();
+                if (isset($_SESSION['user'])) {
+                    echo $twig->render('Products.twig', ['user' => $_SESSION['user'], 'products' => $products]);
+                } elseif (isset($_SESSION['admin'])) {
+                    echo $twig->render('Products.twig', ['admin' => $_SESSION['admin'], 'products' => $products]);
+                }else {
+                    echo $twig->render('Products.twig', ['products' => $products]);
+                }
                 break;
             case 'fruits':
                 $products = getFruits();
-                echo $twig->render('Products.twig', ['products' => $products]);
+                session_start();
+                if (isset($_SESSION['user'])) {
+                    echo $twig->render('Products.twig', ['user' => $_SESSION['user'], 'products' => $products]);
+                }elseif (isset($_SESSION['admin'])) {
+                    echo $twig->render('Products.twig', ['admin' => $_SESSION['admin'], 'products' => $products]);
+                } else {
+                    echo $twig->render('Products.twig', ['products' => $products]);
+                }
                 break;
             default:
                 echo $twig->render('error.twig');

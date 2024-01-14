@@ -1,0 +1,81 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <!doctype html>
+    <html>
+    <head>
+        <title>ISIWEBShop</title>
+        <meta charset='UTF-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="Contenu/style.css">
+    </head>
+    <body>
+    <div class="text-center">
+        <h1 class="display-4">Listes des commandes</h1>
+    </div>
+
+    <div class="table-responsive-sm">
+        <div class="container mt-5">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col" class="text-center align-middle px-4">Order ID</th>
+                    <th scope="col" class="text-center align-middle px-4">Nom</th>
+                    <th scope="col" class="text-center align-middle px-4">Prénom</th>
+                    <th scope="col" class="text-center align-middle px-4">Adresse</th>
+                    <th scope="col" class="text-center align-middle px-4">Panier</th>
+                    <th scope="col" class="text-center align-middle">Prix total</th>
+                    <th scope="col" class="text-center align-middle">Payment type</th>
+                    <th scope="col" class="text-center align-middle">Confirmation</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for orderID, cartDetails in cartData %}
+                    {% for order in cartDetails.order %}
+                        <tr>
+                            <td scope="row" class="text-center align-middle px-4">{{ order.id }}</td>
+                            <td class="text-center align-middle px-4">{{ order.surname }}</td>
+                            <td class="text-center align-middle px-4">{{ order.forname }}</td>
+                            {% if newAdress is defined and newAdress %}
+
+                                <td class="text-center align-middle px-4">
+                                    {{ newAdress[0] }}, {{ newAdress[1] }} {{ newAdress[2] }}
+                                </td>
+
+                            {% else %}
+                                <td class="text-center align-middle px-4">{{ order.adress }}, {{ order.postcode }} {{ order.ville }}</td>
+                            {% endif %}
+                            <td class="text-center align-middle px-4">
+                                {% for orderItem in cartDetails.orderItems %}
+                                    {% for product in cartDetails.products %}
+                                        {% if orderItem.product_id == product.id %}
+                                            {{ orderItem.quantity }} x {{ product.name }}<br>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                            </td>
+                            <td class="text-center align-middle">{{ order.total }}€</td>
+                            <td class="text-center align-middle">{{ order.payment_type }}</td>
+                            {% if order.confirmed == 1 %}
+                                <td class="text-center align-middle">Commande confirmée</td>
+                            {% elseif order.confirmed == 0 %}
+                                <td class="text-center align-middle">
+                                    <form method="post" action="?page=confirm_order">
+                                        <input type="hidden" name="order_id" value="{{ order.id }}">
+                                        <button type="submit" class="btn btn-success">Confirmer</button>
+                                    </form>
+                                </td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </body>
+    </html>
+{% endblock %}
+
