@@ -19,6 +19,9 @@ Pour lancer le site, suivez ces étapes simples :
 3. **Création de la base de données :** Rendez vous sur phpmyadmin, crée une nouvelle base de donnée "web4shop" et lancez le script web4shop.sql dans l'intérpreteur.
 4. **Démarrage :** Lancez le projet en entrant le chemin d'accès au projet dans l'URL de votre navigateur.
 
+> Enfin si vous souhaitez accéder au compte admin, veuillez vous connecter avec les identifiants suivants :
+> admin@gmail.com
+> admin
 ## Conclusion
 
 Merci d'avoir exploré notre projet ! Nous espérons que cette documentation vous a été utile. Si vous avez des questions, des suggestions ou des retours, n'hésitez pas à nous contacter. 
