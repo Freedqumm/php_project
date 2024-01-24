@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f527463-9e6f-4c96-bb00-9b3588fbb81f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/CustomerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/OrderCompletedController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/OrderCompletedController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/newAdress.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/newAdress.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/order.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/rsc/docs/Facture.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/public/rsc/docs/Facture.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/ListOrder.twig" beforeDir="false" afterPath="$PROJECT_DIR$/view/ListOrder.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/accueil.twig" beforeDir="false" afterPath="$PROJECT_DIR$/view/accueil.twig" afterDir="false" />
-    </list>
+    <list default="true" id="7f527463-9e6f-4c96-bb00-9b3588fbb81f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,7 +42,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/xampp/htdocs/2023-sae-105-KentinMartel",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
